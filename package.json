@@ -1,0 +1,24 @@
+{
+  "name": "next-action-guard",
+  "private": true,
+  "scripts": {
+    "build": "pnpm build:next-action-guard",
+    "build:next-action-guard": "pnpm --filter next-action-guard build",
+    "dev:next-action-guard": "pnpm --filter next-action-guard dev",
+    "lint": "pnpm lint:next-action-guard",
+    "lint:next-action-guard": "pnpm --filter next-action-guard lint",
+    "type-check": "pnpm type-check:next-action-guard",
+    "type-check:next-action-guard": "pnpm --filter next-action-guard type-check",
+    "test": "pnpm test:next-action-guard",
+    "test:next-action-guard": "pnpm --filter next-action-guard test",
+    "prettier-check": "",
+    "husky-prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "prettier": "^3.4.2"
+  },
+  "engines": {
+    "node": ">=23.4.0"
+  }
+}
