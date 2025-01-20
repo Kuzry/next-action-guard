@@ -1,20 +1,27 @@
 "use client";
 
-import { useState } from "react";
-import { TNagCallback, TNagCallbackInfer } from "@/types";
+import { useEffect, useState } from "react";
 
-export const useAction = <Schema>(callback: TNagCallbackInfer<Schema>) => {
-  const [isPending, setIsPending] = useState(false);
+export const useAction = <Schema>(serverAction: any) => {
+  const [isPending, setIsPending] = useState(false),
+    [result, setResult] = useState({});
 
   return {
-    execute: (data: TNagCallbackInfer<Schema>) => {
-      console.log("--Execute--");
+    execute: (data: {}) => {
       setIsPending(true);
-      // void callback().then(() => {
-      //   setIsPending(false);
-      // });
+      void serverAction({
+        data,
+        metadata: {},
+      })
+        .then((data: {}) => {
+          setResult(data);
+        })
+        .finally(() => {
+          setIsPending(false);
+        });
     },
     addMetadata: () => {},
     isPending,
+    result,
   };
 };

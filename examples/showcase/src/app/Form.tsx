@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
 export const Form = ({}) => {
-  const { execute, isPending } = useAction(exampleServerAction);
+  const { execute, isPending, result } = useAction(exampleServerAction);
 
   const {
     control,
@@ -27,11 +27,17 @@ export const Form = ({}) => {
   });
 
   const onSubmit = () => {
-    execute({});
+    execute({
+      name: "prororo",
+    });
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col gap-4 w-[300px]"
+    >
+      <pre>{JSON.stringify(result, null, 2)}</pre>
       <div>
         <Controller
           control={control}
@@ -41,7 +47,7 @@ export const Form = ({}) => {
               <input
                 {...field}
                 type="text"
-                className="rounded bg-gray-200 px-4 py-2 w-[300px]"
+                className="rounded bg-gray-200 px-4 py-2 w-full"
                 placeholder="Enter your name"
               />
               {errors.name && (

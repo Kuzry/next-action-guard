@@ -23,9 +23,6 @@
     "jsx": "react-jsx",
     "resolveJsonModule": true,
     "incremental": true,
-    "paths": {
-      "@/*": ["./src/*"]
-    },
     "tsBuildInfoFile": "./dist/tsconfig.tsbuildinfo"
   },
   "include": ["src"],

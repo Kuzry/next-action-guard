@@ -1,10 +1,10 @@
-import { z } from "zod";
+import { z, ZodType } from "zod";
 
 export type TNagSchemaLibraries = z.ZodObject<z.ZodRawShape>;
 
 export type TNagSchema =
   | TNagSchemaLibraries
-  | (() => Promise<TNagSchemaLibraries>)
+  | ((data: { [key: string]: any }) => Promise<TNagSchemaLibraries>)
   | undefined;
 
 // export type TNagMetadata =
@@ -12,9 +12,19 @@ export type TNagSchema =
 //   | (() => Promise<{ [key: string]: {} }>)
 //   | undefined;
 
-export type TNagCallback<T> =
-  | ((props: { data: T }) => Promise<any>)
-  | undefined;
+export type TNagCallback<TData = {}, TMetadata = {}> = (props: {
+  data: TData;
+  metadata: TMetadata;
+}) => Promise<{ [key: string]: any }>;
 
-export type TNagCallbackInfer<T> =
-  T extends TNagCallback<infer T> ? T : undefined;
+export const isSchemaAFunction = (
+  schema: TNagSchema,
+): schema is (data: { [key: string]: any }) => Promise<TNagSchemaLibraries> => {
+  return typeof schema === "function";
+};
+
+export const isSchemaAZod = (
+  schema: TNagSchema,
+): schema is z.ZodObject<z.ZodRawShape> => {
+  return schema instanceof ZodType;
+};

@@ -9,8 +9,10 @@ export const exampleServerAction = createServerAction()
       name: z.string().min(3),
     }),
   )
-  .action(async ({ data }) => {
-    await new Promise((r) => setTimeout(r, 3000));
+  .action(async ({ data, metadata }) => {
+    await new Promise((r) => setTimeout(r, 2000));
 
-    return "response from example server action" + JSON.stringify(data);
+    return {
+      data: "response from example server action",
+    };
   });
