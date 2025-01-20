@@ -1,4 +1,5 @@
 import typescript from "rollup-plugin-typescript2";
+import preserveDirectives from "rollup-plugin-preserve-directives";
 
 export default {
   input: ["src/index.ts"],
@@ -10,6 +11,6 @@ export default {
       entryFileNames: "[name].mjs",
     },
   ],
-  plugins: [typescript()],
+  plugins: [typescript(), preserveDirectives()],
   external: [],
 };

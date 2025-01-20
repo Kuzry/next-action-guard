@@ -5,13 +5,16 @@
     "build": "pnpm build:next-action-guard",
     "build:next-action-guard": "pnpm --filter next-action-guard build",
     "dev:next-action-guard": "pnpm --filter next-action-guard dev",
+    "dev:showcase": "pnpm --filter showcase dev",
     "lint": "pnpm lint:next-action-guard",
     "lint:next-action-guard": "pnpm --filter next-action-guard lint",
+    "lint:showcase": "pnpm --filter showcase lint",
     "type-check": "pnpm type-check:next-action-guard",
     "type-check:next-action-guard": "pnpm --filter next-action-guard type-check",
+    "type-check:showcase": "pnpm --filter showcase type-check",
     "test": "pnpm test:next-action-guard",
     "test:next-action-guard": "pnpm --filter next-action-guard test",
-    "prettier-check": "",
+    "prettier-check": "prettier",
     "husky-prepare": "husky"
   },
   "devDependencies": {

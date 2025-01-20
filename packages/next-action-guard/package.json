@@ -12,11 +12,21 @@
     "type-check": "tsc --noEmit",
     "test": "vitest"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.mjs"
+    }
+  },
   "dependencies": {
+    "@types/react": "^19",
+    "next": "15.1.5",
+    "react": "^19.0.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {
     "rollup": "^4.31.0",
+    "rollup-plugin-preserve-directives": "^0.4.0",
     "rollup-plugin-typescript2": "^0.36.0",
     "typescript": "^5.7.3",
     "vitest": "^3.0.2"
