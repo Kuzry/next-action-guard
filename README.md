@@ -27,7 +27,7 @@ export const actionGuard = createActionGuard()
     });
 ```
 
-```jsx
+```tsx
 import { useAction } from 'next-action-guard';
 
 export const Form = ({}) => {
