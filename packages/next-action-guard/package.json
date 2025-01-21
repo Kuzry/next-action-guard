@@ -1,6 +1,6 @@
 {
   "name": "next-action-guard",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "keywords": [],
   "author": "",
@@ -10,7 +10,8 @@
     "dev": "rollup -c -w",
     "lint": "eslint ./src",
     "type-check": "tsc --noEmit",
-    "test": "vitest"
+    "test": "vitest",
+    "publish": "pnpm build && npm publish"
   },
   "exports": {
     ".": {

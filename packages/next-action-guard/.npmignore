@@ -1,0 +1,5 @@
+src/
+tests/
+*.config.mjs
+*.config.ts
+*.json
