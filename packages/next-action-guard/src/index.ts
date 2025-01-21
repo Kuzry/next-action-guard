@@ -1,4 +1,4 @@
-export { createServerAction } from "./nag";
+export { createActionGuard } from "./nag";
 export { useAction } from "./react";
 export {
   type TNagSchemaLibraries,

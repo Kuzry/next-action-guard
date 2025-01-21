@@ -6,10 +6,10 @@ import {
 } from "./types";
 
 export class Nag<Schema extends TNagSchema> {
-  protected schema: Schema | undefined;
+  protected _schema: Schema | undefined;
 
-  setSchema(schema: Schema) {
-    this.schema = schema;
+  schema(schema: Schema) {
+    this._schema = schema;
     return this;
   }
 
@@ -17,7 +17,7 @@ export class Nag<Schema extends TNagSchema> {
 
   action(callback: TNagCallback) {
     return async (data: { [key: string]: any }) => {
-      let localSchema: TNagSchema = this.schema,
+      let localSchema: TNagSchema = this._schema,
         parsedData: { [key: string]: any } = {};
 
       if (isSchemaAFunction(localSchema)) {
@@ -39,6 +39,6 @@ export class Nag<Schema extends TNagSchema> {
   }
 }
 
-export const createServerAction = () => {
+export const createActionGuard = () => {
   return new Nag();
 };

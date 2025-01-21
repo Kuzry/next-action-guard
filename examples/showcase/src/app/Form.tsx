@@ -28,7 +28,7 @@ export const Form = ({}) => {
 
   const onSubmit = () => {
     execute({
-      name: "prororo",
+      name: "john",
     });
   };
 

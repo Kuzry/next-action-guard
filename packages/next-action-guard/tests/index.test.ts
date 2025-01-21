@@ -1,13 +1,13 @@
 import { expect, test } from "vitest";
-import { createServerAction, Nag } from "../src";
+import { createActionGuard, Nag } from "../src";
 import { z } from "zod";
 
 test("init1", () => {
-  const serverAction = createServerAction();
+  const serverAction = createActionGuard();
 
   expect(serverAction).toBeInstanceOf(Nag);
 
-  serverAction.setSchema(
+  serverAction.schema(
     z.object({
       name: z.string(),
     }),
@@ -15,9 +15,9 @@ test("init1", () => {
 });
 
 test("init2", () => {
-  const serverAction = createServerAction();
+  const serverAction = createActionGuard();
 
-  serverAction.setSchema(async () => {
+  serverAction.schema(async () => {
     return z.object({
       name: z.string(),
     });
@@ -25,7 +25,7 @@ test("init2", () => {
 });
 
 test("init3", () => {
-  const serverAction = createServerAction();
+  const serverAction = createActionGuard();
 
   serverAction.action(async ({ data }) => {
     return {};

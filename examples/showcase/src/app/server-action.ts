@@ -1,10 +1,10 @@
 "use server";
 
-import { createServerAction } from "next-action-guard";
+import { createActionGuard } from "next-action-guard";
 import { z } from "zod";
 
-export const exampleServerAction = createServerAction()
-  .setSchema(
+export const exampleServerAction = createActionGuard()
+  .schema(
     z.object({
       name: z.string().min(3),
     }),
